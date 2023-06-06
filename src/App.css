@@ -57,29 +57,34 @@
 
 .navbar-link {
   text-decoration: none;
-  color: #00b300;
-  font-size: medium;
-  font-family: Proxima-Nova;
-  /* font-weight: bold; */
-}
-
-.navbar-button {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #ff6600;
   color: #fff;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 20px;
+  font-size: medium;
+  font-family: 'Proxima Nova', sans-serif;
+  /* font-weight: bold; */
+  position: relative;
+  transition: color 0.3s ease;
 }
 
-.navbar-button:hover {
-  background-color: #ff5500;
+.navbar-link:hover {
+  color: #00b300;
 }
 
-.navbar-button .navbar-link {
-  color: #fff; /* Set font color to white */
+.navbar-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #00b300;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
 }
+
+.navbar-link:hover::after {
+  transform: scaleX(1);
+}
+
 
 body {
   margin: 0;
@@ -135,3 +140,15 @@ body {
 .Proxima-Nova {
   font-family: Proxima-Nova;
 }
+
+.main-page-content,
+.main-page-title {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.main-page-content.fade-in,
+.main-page-title.fade-in {
+  opacity: 1;
+}
+
