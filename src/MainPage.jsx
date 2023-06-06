@@ -73,44 +73,16 @@ const MainPage = () => {
           Services
         </h1>
         <div className={`icons-container ${showIcons ? "slide-in" : ""}`}>
-          <div
-            className="slide-item"
-            style={{
-              opacity: showIcons ? 1 : 0,
-              transform: `translateX(${showIcons ? 0 : -100}px)`,
-              transition: "opacity 0.5s, transform 0.5s",
-            }}
-          >
+          <div className="slide-item">
             <CiMobile4 color="white" size={100} />
           </div>
-          <div
-            className="slide-item"
-            style={{
-              opacity: showIcons ? 1 : 0,
-              transform: `translateX(${showIcons ? 0 : -100}px)`,
-              transition: "opacity 0.5s, transform 0.5s",
-            }}
-          >
+          <div className="slide-item">
             <CiMonitor color="white" size={100} />
           </div>
-          <div
-            className="slide-item"
-            style={{
-              opacity: showIcons ? 1 : 0,
-              transform: `translateX(${showIcons ? 0 : -100}px)`,
-              transition: "opacity 0.5s, transform 0.5s",
-            }}
-          >
+          <div className="slide-item">
             <RiShip2Line color="white" size={100} />
           </div>
-          <div
-            className="slide-item"
-            style={{
-              opacity: showIcons ? 1 : 0,
-              transform: `translateX(${showIcons ? 0 : -100}px)`,
-              transition: "opacity 0.5s, transform 0.5s",
-            }}
-          >
+          <div className="slide-item">
             <CiDatabase color="white" size={100} />
           </div>
         </div>
