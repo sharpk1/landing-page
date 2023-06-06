@@ -5,6 +5,7 @@ import { Element } from "react-scroll";
 import ScrollProgress from "./ScrollProgress";
 import { CiMobile4, CiMonitor, CiDatabase } from "react-icons/ci";
 import { RiShip2Line } from "react-icons/ri";
+import "./MainPage.css"; // Import your custom CSS file
 
 const MainPage = () => {
   const [fadeIn, setFadeIn] = useState(false);
@@ -16,20 +17,21 @@ const MainPage = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const iconsElement = document.querySelector(".icons-container");
-      if (iconsElement) {
-        const iconsPosition = iconsElement.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        if (iconsPosition < windowHeight) {
-          setShowIcons(true);
-        }
+      const mobileIcon = document.getElementById("mobile-icon");
+
+      if (mobileIcon) {
+        const rect = mobileIcon.getBoundingClientRect();
+        const isVisible =
+          rect.top >= 0 &&
+          rect.bottom <=
+            (window.innerHeight || document.documentElement.clientHeight);
+
+        setShowIcons(isVisible);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -54,7 +56,6 @@ const MainPage = () => {
       <br />
       <br />
       <br />
-
       <br />
       <br />
       <br />
@@ -72,19 +73,31 @@ const MainPage = () => {
         >
           Services
         </h1>
-        <div className={`icons-container ${showIcons ? "slide-in" : ""}`}>
+        <div style={{ display: "flex", justifyContent: "center" }}>
           <div className="slide-item">
-            <CiMobile4 color="white" size={100} />
+            <CiMobile4
+              id="mobile-icon"
+              color="white"
+              size={100}
+              style={{
+                transform: showIcons ? "translateX(-500px)" : "translateX(0)",
+                transition: "transform 0.5s",
+              }}
+            />
           </div>
-          <div className="slide-item">
+          {/* <div className="slide-item">
             <CiMonitor color="white" size={100} />
           </div>
           <div className="slide-item">
-            <RiShip2Line color="white" size={100} />
+            <RiShip2Line
+              color="white"
+              size={100}
+              style={{ transform: showIcons ? "translateX(-300px)" : "none" }}
+            />
           </div>
           <div className="slide-item">
             <CiDatabase color="white" size={100} />
-          </div>
+          </div> */}
         </div>
         <br />
       </Element>
