@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import MouseScroll from "./MouseScroll";
 import Navbar from "./Navbar";
 import { Element } from "react-scroll";
@@ -9,10 +9,43 @@ import "./MainPage.css"; // Import your custom CSS file
 
 const MainPage = () => {
   const [fadeIn, setFadeIn] = useState(false);
-  const [showIcons, setShowIcons] = useState(false);
+  const [showMobileText, setShowMobileText] = useState(false);
+  const [showMonitorIcon, setShowMonitorIcon] = useState(false);
+
+  const monitorRef = useRef(null);
 
   useEffect(() => {
     setFadeIn(true);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const monitorIcon = document.getElementById("monitor-icon");
+
+      if (monitorIcon) {
+        const rect = monitorIcon.getBoundingClientRect();
+        const isVisible =
+          rect.top >= 0 &&
+          rect.bottom <=
+            (window.innerHeight || document.documentElement.clientHeight);
+
+        setShowMonitorIcon(isVisible);
+      }
+      const monitorElement = monitorRef.current;
+
+      if (monitorElement) {
+        const rect = monitorElement.getBoundingClientRect();
+        const isVisible =
+          rect.top >= 0 &&
+          rect.bottom <=
+            (window.innerHeight || document.documentElement.clientHeight);
+
+        setShowMonitorIcon(isVisible);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -26,7 +59,7 @@ const MainPage = () => {
           rect.bottom <=
             (window.innerHeight || document.documentElement.clientHeight);
 
-        setShowIcons(isVisible);
+        setShowMobileText(isVisible);
       }
     };
 
@@ -80,10 +113,13 @@ const MainPage = () => {
               color="white"
               size={100}
               style={{
-                transform: showIcons ? "translateX(-500px)" : "translateX(0)",
+                transform: showMobileText ? "translateX(-100px)" : "translateX(0)",
                 transition: "transform 0.5s",
               }}
             />
+            {showMobileText && (
+              <div style={{marginTop: '25px'}} className="main-page-title fade-in">Mobile application development</div>
+            )}
           </div>
           {/* <div className="slide-item">
             <CiMonitor color="white" size={100} />
@@ -98,6 +134,14 @@ const MainPage = () => {
           <div className="slide-item">
             <CiDatabase color="white" size={100} />
           </div> */}
+        </div>
+        <div>
+        <div className="slide-item"  ref={monitorRef}>
+            <CiMonitor color="white" size={100}   style={{
+                transform: showMonitorIcon ? "translateX(100px)" : "translateX(0)",
+                transition: "transform 0.5s",
+              }}/>
+          </div>
         </div>
         <br />
       </Element>
