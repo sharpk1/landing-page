@@ -12,6 +12,7 @@ const MainPage = () => {
   const [showMobileText, setShowMobileText] = useState(false);
   const [showMonitorIcon, setShowMonitorIcon] = useState(false);
   const [showContainerIcon, setShowContainerIcon] = useState(false);
+  const [showShipIcon, setShowShipIcon] = useState(false);
 
   const monitorRef = useRef(null);
 
@@ -76,6 +77,21 @@ const MainPage = () => {
         const rect = databaseIcon.getBoundingClientRect();
         const isVisible = rect.top >= 0 && rect.top <= window.innerHeight;
         setShowContainerIcon(isVisible);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const shipIcon = document.getElementById("ship-icon");
+
+      if (shipIcon) {
+        const rect = shipIcon.getBoundingClientRect();
+        const isVisible = rect.top >= 0 && rect.top <= window.innerHeight;
+        setShowShipIcon(isVisible);
       }
     };
 
@@ -171,13 +187,54 @@ const MainPage = () => {
               style={{
               marginTop: '-20px',
               position:'absolute',
-                transform: showContainerIcon ? "translateX(-400px)" : "translateX(0)",
+                transform: showContainerIcon ? "translateX(-450px)" : "translateX(0)",
                 transition: "transform 0.5s",
               }} color="white" size={100} />
+              {showMonitorIcon && (
+              <div className="main-page-title fade-in">Backend integration and databases</div>
+            )}
+          </div>
+          <div className="slide-item">
+            <RiShip2Line
+              id='ship-icon'
+              color="white"
+              size={100}
+              style={{
+                marginTop: '-20px',
+                position:'absolute',
+                  transform: showShipIcon ? "translateX(450px)" : "translateX(0)",
+                  transition: "transform 0.5s",
+                }}
+            />
+            {showShipIcon && (
+              <div className="main-page-title fade-in">Cloud infrastructure and Dev Ops</div>
+            )}
           </div>
         </div>
         <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
       </Element>
+      <h1
+          style={{
+            flexWrap: "wrap",
+            alignContent: "space-between",
+            display: "flex",
+            justifyContent: "center",
+          }}
+          className={`main-page-title ${fadeIn ? "fade-in" : ""}`}
+        >
+          About Us
+        </h1>
     </>
   );
 };
