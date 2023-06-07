@@ -11,6 +11,7 @@ const MainPage = () => {
   const [fadeIn, setFadeIn] = useState(false);
   const [showMobileText, setShowMobileText] = useState(false);
   const [showMonitorIcon, setShowMonitorIcon] = useState(false);
+  const [showContainerIcon, setShowContainerIcon] = useState(false);
 
   const monitorRef = useRef(null);
 
@@ -59,7 +60,22 @@ const MainPage = () => {
           rect.bottom <=
             (window.innerHeight || document.documentElement.clientHeight);
 
-        setShowMobileText(isVisible);
+            setShowMobileText(isVisible);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const databaseIcon = document.getElementById("database-icon");
+
+      if (databaseIcon) {
+        const rect = databaseIcon.getBoundingClientRect();
+        const isVisible = rect.top >= 0 && rect.top <= window.innerHeight;
+        setShowContainerIcon(isVisible);
       }
     };
 
@@ -113,12 +129,14 @@ const MainPage = () => {
               color="white"
               size={100}
               style={{
-                transform: showMobileText ? "translateX(-100px)" : "translateX(0)",
+                marginTop: '-20px',
+                position:'absolute',
+                transform: showMobileText ? "translateX(-438px)" : "translateX(0)",
                 transition: "transform 0.5s",
               }}
             />
             {showMobileText && (
-              <div style={{marginTop: '25px'}} className="main-page-title fade-in">Mobile application development</div>
+              <div className="main-page-title fade-in">Mobile application development</div>
             )}
           </div>
           {/* <div className="slide-item">
@@ -137,10 +155,25 @@ const MainPage = () => {
         </div>
         <div>
         <div className="slide-item"  ref={monitorRef}>
-            <CiMonitor color="white" size={100}   style={{
-                transform: showMonitorIcon ? "translateX(100px)" : "translateX(0)",
+            <CiMonitor color="white" size={100} style={{
+              marginTop: '-20px',
+              position:'absolute',
+                transform: showMonitorIcon ? "translateX(400px)" : "translateX(0)",
                 transition: "transform 0.5s",
               }}/>
+              {showMonitorIcon && (
+              <div className="main-page-title fade-in">Web application development</div>
+            )}
+          </div>
+          <div className="slide-item">
+            <CiDatabase 
+              id={'database-icon'}
+              style={{
+              marginTop: '-20px',
+              position:'absolute',
+                transform: showContainerIcon ? "translateX(-400px)" : "translateX(0)",
+                transition: "transform 0.5s",
+              }} color="white" size={100} />
           </div>
         </div>
         <br />
