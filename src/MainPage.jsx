@@ -5,7 +5,7 @@ import { Element } from "react-scroll";
 import ScrollProgress from "./ScrollProgress";
 import { CiMobile4, CiMonitor, CiDatabase } from "react-icons/ci";
 import { RiShip2Line } from "react-icons/ri";
-import "./MainPage.css"; // Import your custom CSS file
+import "./MainPage.css";
 
 const MainPage = () => {
   const [fadeIn, setFadeIn] = useState(false);
@@ -224,6 +224,7 @@ const MainPage = () => {
         <br />
         <br />
       </Element>
+      <Element name="about">
       <h1
           style={{
             flexWrap: "wrap",
@@ -235,6 +236,8 @@ const MainPage = () => {
         >
           About Us
         </h1>
+      </Element>
+      
     </>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import '../src/scroll.css'
+import { Link } from "react-scroll";
 
 const ScrollProgress = () => {
   const [progress, setProgress] = useState(0);
@@ -25,7 +26,9 @@ const ScrollProgress = () => {
       <div className="scroll-progress-headers">
         <h2>Home</h2>
         <h2>Services</h2>
-        <h2>About</h2>
+        <Link activeClass="active" className="test2" to="about" spy={true} smooth={true} duration={500}>
+          <h2>About</h2>
+        </Link>
       </div>
     </div>
   );
