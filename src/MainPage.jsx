@@ -5,7 +5,9 @@ import { Element } from "react-scroll";
 import ScrollProgress from "./ScrollProgress";
 import { CiMobile4, CiMonitor, CiDatabase } from "react-icons/ci";
 import { RiShip2Line } from "react-icons/ri";
+import { Link } from 'react-scroll';
 import "./MainPage.css";
+import ProjectForm from "./ProjectForm";
 
 const MainPage = () => {
   const [fadeIn, setFadeIn] = useState(false);
@@ -102,17 +104,25 @@ const MainPage = () => {
   return (
     <>
       <Navbar />
+      <Element name="home">
       <ScrollProgress />
+      </Element>
       <MouseScroll />
+      
       <div className="main-page">
         <div className={`main-page-content ${fadeIn ? "fade-in" : ""}`}>
+          
           <h1 className={`main-page-title ${fadeIn ? "fade-in" : ""}`}>
             Welcome from Altiro!
           </h1>
+         
           <p className="main-page-description">
             Let's make your idea a reality.
           </p>
-          <button className="main-page-button">Get Started</button>
+          <Link activeClass="active" className="navlink" to="home" spy={true} smooth={true} duration={500}>
+            <button className="main-page-button">Get Started</button>
+          </Link>
+          
         </div>
       </div>
       <br />
@@ -155,19 +165,6 @@ const MainPage = () => {
               <div className="main-page-title fade-in">Mobile application development</div>
             )}
           </div>
-          {/* <div className="slide-item">
-            <CiMonitor color="white" size={100} />
-          </div>
-          <div className="slide-item">
-            <RiShip2Line
-              color="white"
-              size={100}
-              style={{ transform: showIcons ? "translateX(-300px)" : "none" }}
-            />
-          </div>
-          <div className="slide-item">
-            <CiDatabase color="white" size={100} />
-          </div> */}
         </div>
         <div>
         <div className="slide-item"  ref={monitorRef}>
@@ -237,7 +234,58 @@ const MainPage = () => {
           About Us
         </h1>
       </Element>
-      
+      <h2
+  style={{
+    maxWidth: "900px",
+    margin: "0 auto",
+    color: "white",
+    marginTop: "20px",
+    marginBottom: "20px",
+    lineHeight: "1.5",
+    textAlign: "center"
+  }}
+>
+  Altiro LLC is a top-notch software consulting firm that specializes in web development, mobile development, backend/databases, and cloud infrastructure/devops. Our team of experts delivers cutting-edge solutions customized to your needs. Get in touch with us to discuss your software development goals.
+</h2>
+
+      <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+      <Element name="work">
+      <h1
+          style={{
+            flexWrap: "wrap",
+            alignContent: "space-between",
+            display: "flex",
+            justifyContent: "center",
+          }}
+          className={`main-page-title ${fadeIn ? "fade-in" : ""}`}
+        >
+          Work with Us
+        </h1>
+      </Element>
+      <ProjectForm/>
+      <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
     </>
   );
 };

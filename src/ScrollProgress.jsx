@@ -24,10 +24,17 @@ const ScrollProgress = () => {
     <div className="scroll-progress">
       <div className="scroll-progress-bar" style={{ width: `${progress}%` }} />
       <div className="scroll-progress-headers">
-        <h2>Home</h2>
-        <h2>Services</h2>
-        <Link activeClass="active" className="test2" to="about" spy={true} smooth={true} duration={500}>
+      <Link activeClass="active" className="navlink" to="home" spy={true} smooth={true} duration={500}>
+          <h2>Home</h2>
+        </Link>
+        <Link activeClass="active" className="navlink" to="services" spy={true} smooth={true} duration={500}>
+          <h2>Services</h2>
+        </Link>
+        <Link activeClass="active" className="navlink" to="about" spy={true} smooth={true} duration={500}>
           <h2>About</h2>
+        </Link>
+        <Link activeClass="active" className="navlink" to="work" spy={true} smooth={true} duration={500}>
+          <h2>Work with Us</h2>
         </Link>
       </div>
     </div>
