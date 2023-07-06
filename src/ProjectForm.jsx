@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from 'axios'
 
 const ProjectForm = () => {
   const [firstName, setFirstName] = useState("");
@@ -11,13 +12,28 @@ const ProjectForm = () => {
     event.preventDefault();
 
     // Perform any necessary validation or data processing here
+    const formData = {
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
+      projectDescription,
+    };
 
-    // Clear form fields
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setPhoneNumber("");
-    setProjectDescription("");
+    // Make an HTTP POST request to the backend endpoint
+    axios.post("/api/send-email", formData)
+      .then((response) => {
+        console.log("Email sent successfully");
+        // Clear form fields
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+        setPhoneNumber("");
+        setProjectDescription("");
+      })
+      .catch((error) => {
+        console.error("Error sending email:", error);
+      }); 
   };
 
   return (
