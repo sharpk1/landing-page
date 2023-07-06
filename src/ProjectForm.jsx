@@ -21,7 +21,7 @@ const ProjectForm = () => {
     };
 
     // Make an HTTP POST request to the backend endpoint
-    axios.post("/api/send-email", formData)
+    axios.post("http://localhost:3000/api/send-email", formData)
       .then((response) => {
         console.log("Email sent successfully");
         // Clear form fields
@@ -33,7 +33,7 @@ const ProjectForm = () => {
       })
       .catch((error) => {
         console.error("Error sending email:", error);
-      }); 
+      });
   };
 
   return (
