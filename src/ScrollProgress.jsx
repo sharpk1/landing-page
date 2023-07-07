@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import '../src/scroll.css'
+import "../src/scroll.css";
+import Navbar from "./Navbar";
 import { Link } from "react-scroll";
 
 const ScrollProgress = () => {
@@ -21,23 +22,55 @@ const ScrollProgress = () => {
   }, []);
 
   return (
-    <div className="scroll-progress">
-      <div className="scroll-progress-bar" style={{ width: `${progress}%` }} />
-      <div className="scroll-progress-headers">
-      <Link activeClass="active" className="navlink" to="home" spy={true} smooth={true} duration={500}>
-          <h2>Home</h2>
-        </Link>
-        <Link activeClass="active" className="navlink" to="services" spy={true} smooth={true} duration={500}>
-          <h2>Services</h2>
-        </Link>
-        <Link activeClass="active" className="navlink" to="about" spy={true} smooth={true} duration={500}>
-          <h2>About</h2>
-        </Link>
-        <Link activeClass="active" className="navlink" to="work" spy={true} smooth={true} duration={500}>
-          <h2>Work with Us</h2>
-        </Link>
+    <>
+      <Navbar />
+      <div className="scroll-progress">
+        <div className="scroll-progress-bar" style={{ width: `${progress}%` }} />
+        <div className="scroll-progress-headers">
+          {/* Link for Desktop */}
+          <Link
+            activeClass="active"
+            className="navlink desktop-link"
+            to="home"
+            spy={true}
+            smooth={true}
+            duration={500}
+          >
+            <h2>Home</h2>
+          </Link>
+          <Link
+            activeClass="active"
+            className="navlink desktop-link"
+            to="services"
+            spy={true}
+            smooth={true}
+            duration={500}
+          >
+            <h2>Services</h2>
+          </Link>
+          <Link
+            activeClass="active"
+            className="navlink desktop-link"
+            to="about"
+            spy={true}
+            smooth={true}
+            duration={500}
+          >
+            <h2>About</h2>
+          </Link>
+          <Link
+            activeClass="active"
+            className="navlink desktop-link"
+            to="work"
+            spy={true}
+            smooth={true}
+            duration={500}
+          >
+            <h2>Work with Us</h2>
+          </Link>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

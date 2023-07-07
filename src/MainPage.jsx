@@ -15,6 +15,20 @@ const MainPage = () => {
   const [showMonitorIcon, setShowMonitorIcon] = useState(false);
   const [showContainerIcon, setShowContainerIcon] = useState(false);
   const [showShipIcon, setShowShipIcon] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  const handleResize = () => {
+    setIsMobile(window.innerWidth <= 767);
+  };
+
+  useEffect(() => {
+    handleResize(); // Set initial value
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const monitorRef = useRef(null);
 
@@ -119,7 +133,7 @@ const MainPage = () => {
           <p className="main-page-description">
             Let's make your idea a reality.
           </p>
-          <Link activeClass="active" className="navlink" to="home" spy={true} smooth={true} duration={500}>
+          <Link activeClass="active" className="navlink" to="test2" spy={true} smooth={true} duration={500}>
             <button className="main-page-button">Get Started</button>
           </Link>
           
@@ -153,11 +167,11 @@ const MainPage = () => {
             <CiMobile4
               id="mobile-icon"
               color="white"
-              size={100}
+              size={isMobile ? 50 : 100}
               style={{
                 marginTop: '-20px',
                 position:'absolute',
-                transform: showMobileText ? "translateX(-438px)" : "translateX(0)",
+                transform: showMobileText ? `translateX(${isMobile ? '-150px' : '-438px'})` : "translateX(0)",
                 transition: "transform 0.5s",
               }}
             />
@@ -168,10 +182,10 @@ const MainPage = () => {
         </div>
         <div>
         <div className="slide-item"  ref={monitorRef}>
-            <CiMonitor color="white" size={100} style={{
+            <CiMonitor color="white" size={isMobile ? 50 : 100} style={{
               marginTop: '-20px',
               position:'absolute',
-                transform: showMonitorIcon ? "translateX(400px)" : "translateX(0)",
+                transform: showMonitorIcon ? `translateX(${isMobile ? '150px' : '400px'})` : "translateX(0)",
                 transition: "transform 0.5s",
               }}/>
               {showMonitorIcon && (
@@ -184,9 +198,9 @@ const MainPage = () => {
               style={{
               marginTop: '-20px',
               position:'absolute',
-                transform: showContainerIcon ? "translateX(-450px)" : "translateX(0)",
+                transform: showContainerIcon ? `translateX(${isMobile ? '-170px' : '-450px'})` : "translateX(0)",
                 transition: "transform 0.5s",
-              }} color="white" size={100} />
+              }} color="white" size={isMobile ? 50 : 100} />
               {showMonitorIcon && (
               <div className="main-page-title fade-in">Backend integration and databases</div>
             )}
@@ -195,11 +209,11 @@ const MainPage = () => {
             <RiShip2Line
               id='ship-icon'
               color="white"
-              size={100}
+              size={isMobile ? 50 : 100}
               style={{
                 marginTop: '-20px',
                 position:'absolute',
-                  transform: showShipIcon ? "translateX(450px)" : "translateX(0)",
+                  transform: showShipIcon ? `translateX(${isMobile ? '170px' : '430px'})` : "translateX(0)",
                   transition: "transform 0.5s",
                 }}
             />

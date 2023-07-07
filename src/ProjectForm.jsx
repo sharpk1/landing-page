@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios'
+import './scroll.css'
 
 const ProjectForm = () => {
   const [firstName, setFirstName] = useState("");
@@ -7,6 +8,20 @@ const ProjectForm = () => {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [projectDescription, setProjectDescription] = useState("");
+  const [isMobile, setIsMobile] = useState(false);
+
+  const handleResize = () => {
+    setIsMobile(window.innerWidth <= 767);
+  };
+  
+  useEffect(() => {
+    handleResize(); // Set initial value
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -54,7 +69,8 @@ const ProjectForm = () => {
         First Name
         <input
           style={{
-            width: "100%",
+            marginLeft: isMobile ? '5px' : '0px',
+            width: isMobile ? '90%' : '100%',
             padding: "5px",
             borderRadius: "20px",
             height: "40px",
@@ -70,7 +86,8 @@ const ProjectForm = () => {
         Last Name
         <input
           style={{
-            width: "100%",
+            marginLeft: isMobile ? '5px' : '0px',
+            width: isMobile ? '90%' : '100%',
             padding: "5px",
             borderRadius: "20px",
             height: "40px",
@@ -87,7 +104,8 @@ const ProjectForm = () => {
         Email Address
         <input
           style={{
-            width: "100%",
+            marginLeft: isMobile ? '5px' : '0px',
+            width: isMobile ? '90%' : '100%',
             padding: "5px",
             borderRadius: "20px",
             height: "40px",
@@ -103,7 +121,8 @@ const ProjectForm = () => {
         Phone Number
         <input
           style={{
-            width: "100%",
+            marginLeft: isMobile ? '5px' : '0px',
+            width: isMobile ? '90%' : '100%',
             padding: "5px",
             borderRadius: "20px",
             height: "40px",
@@ -119,7 +138,8 @@ const ProjectForm = () => {
         Project Description
         <textarea
           style={{
-            width: "100%",
+            marginLeft: isMobile ? '5px' : '0px',
+            width: isMobile ? '90%' : '100%',
             padding: "5px",
             borderRadius: "20px",
             height: "120px",
