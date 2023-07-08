@@ -5,7 +5,7 @@ import { Element } from "react-scroll";
 import ScrollProgress from "./ScrollProgress";
 import { CiMobile4, CiMonitor, CiDatabase } from "react-icons/ci";
 import { RiShip2Line } from "react-icons/ri";
-import { Link } from 'react-scroll';
+import { Link } from "react-scroll";
 import "./MainPage.css";
 import ProjectForm from "./ProjectForm";
 
@@ -23,10 +23,10 @@ const MainPage = () => {
 
   useEffect(() => {
     handleResize(); // Set initial value
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -77,7 +77,7 @@ const MainPage = () => {
           rect.bottom <=
             (window.innerHeight || document.documentElement.clientHeight);
 
-            setShowMobileText(isVisible);
+        setShowMobileText(isVisible);
       }
     };
 
@@ -119,24 +119,29 @@ const MainPage = () => {
     <>
       <Navbar />
       <Element name="home">
-      <ScrollProgress />
+        <ScrollProgress />
       </Element>
       <MouseScroll />
-      
+
       <div className="main-page">
         <div className={`main-page-content ${fadeIn ? "fade-in" : ""}`}>
-          
           <h1 className={`main-page-title ${fadeIn ? "fade-in" : ""}`}>
             Welcome from Altiro!
           </h1>
-         
+
           <p className="main-page-description">
             Let's make your idea a reality.
           </p>
-          <Link activeClass="active" className="navlink" to="test2" spy={true} smooth={true} duration={500}>
+          <Link
+            activeClass="active"
+            className="navlink"
+            to="test2"
+            spy={true}
+            smooth={true}
+            duration={500}
+          >
             <button className="main-page-button">Get Started</button>
           </Link>
-          
         </div>
       </div>
       <br />
@@ -169,56 +174,79 @@ const MainPage = () => {
               color="white"
               size={isMobile ? 50 : 100}
               style={{
-                marginTop: '-20px',
-                position:'absolute',
-                transform: showMobileText ? `translateX(${isMobile ? '-150px' : '-438px'})` : "translateX(0)",
+                marginTop: "-20px",
+                position: "absolute",
+                transform: showMobileText
+                  ? `translateX(${isMobile ? "-150px" : "-438px"})`
+                  : "translateX(0)",
                 transition: "transform 0.5s",
               }}
             />
             {showMobileText && (
-              <div className="main-page-title fade-in">Mobile application development</div>
+              <div className="main-page-title fade-in">
+                Mobile application development
+              </div>
             )}
           </div>
         </div>
         <div>
-        <div className="slide-item"  ref={monitorRef}>
-            <CiMonitor color="white" size={isMobile ? 50 : 100} style={{
-              marginTop: '-20px',
-              position:'absolute',
-                transform: showMonitorIcon ? `translateX(${isMobile ? '150px' : '400px'})` : "translateX(0)",
+          <div className="slide-item" ref={monitorRef}>
+            <CiMonitor
+              color="white"
+              size={isMobile ? 50 : 100}
+              style={{
+                marginTop: "-20px",
+                position: "absolute",
+                transform: showMonitorIcon
+                  ? `translateX(${isMobile ? "150px" : "400px"})`
+                  : "translateX(0)",
                 transition: "transform 0.5s",
-              }}/>
-              {showMonitorIcon && (
-              <div className="main-page-title fade-in">Web application development</div>
+              }}
+            />
+            {showMonitorIcon && (
+              <div className="main-page-title fade-in">
+                Web application development
+              </div>
             )}
           </div>
           <div className="slide-item">
-            <CiDatabase 
-              id={'database-icon'}
+            <CiDatabase
+              id={"database-icon"}
               style={{
-              marginTop: '-20px',
-              position:'absolute',
-                transform: showContainerIcon ? `translateX(${isMobile ? '-170px' : '-450px'})` : "translateX(0)",
+                marginTop: "-20px",
+                position: "absolute",
+                transform: showContainerIcon
+                  ? `translateX(${isMobile ? "-170px" : "-450px"})`
+                  : "translateX(0)",
                 transition: "transform 0.5s",
-              }} color="white" size={isMobile ? 50 : 100} />
-              {showMonitorIcon && (
-              <div className="main-page-title fade-in">Backend integration and databases</div>
+              }}
+              color="white"
+              size={isMobile ? 50 : 100}
+            />
+            {showMonitorIcon && (
+              <div className="main-page-title fade-in">
+                Backend integration and databases
+              </div>
             )}
           </div>
           <div className="slide-item">
             <RiShip2Line
-              id='ship-icon'
+              id="ship-icon"
               color="white"
               size={isMobile ? 50 : 100}
               style={{
-                marginTop: '-20px',
-                position:'absolute',
-                  transform: showShipIcon ? `translateX(${isMobile ? '170px' : '430px'})` : "translateX(0)",
-                  transition: "transform 0.5s",
-                }}
+                marginTop: "-20px",
+                position: "absolute",
+                transform: showShipIcon
+                  ? `translateX(${isMobile ? "170px" : "430px"})`
+                  : "translateX(0)",
+                transition: "transform 0.5s",
+              }}
             />
             {showShipIcon && (
-              <div className="main-page-title fade-in">Cloud infrastructure and Dev Ops</div>
+              <div className="main-page-title fade-in">
+                Cloud infrastructure and Dev Ops
+              </div>
             )}
           </div>
         </div>
@@ -236,7 +264,7 @@ const MainPage = () => {
         <br />
       </Element>
       <Element name="about">
-      <h1
+        <h1
           style={{
             flexWrap: "wrap",
             alignContent: "space-between",
@@ -249,33 +277,37 @@ const MainPage = () => {
         </h1>
       </Element>
       <h2
-  style={{
-    maxWidth: "900px",
-    margin: "0 auto",
-    color: "white",
-    marginTop: "20px",
-    marginBottom: "20px",
-    lineHeight: "1.5",
-    textAlign: "center"
-  }}
->
-  Altiro LLC is a top-notch software consulting firm that specializes in web development, mobile development, backend/databases, and cloud infrastructure/devops. Our team of experts delivers cutting-edge solutions customized to your needs. Get in touch with us to discuss your software development goals.
-</h2>
+        style={{
+          maxWidth: "900px",
+          margin: "0 auto",
+          color: "white",
+          marginTop: "20px",
+          marginBottom: "20px",
+          lineHeight: "1.5",
+          textAlign: "center",
+        }}
+      >
+        Altiro LLC is a leading software consulting firm that specializes in web
+        development, mobile development, backend/databases, and cloud
+        infrastructure/devops. Our team of experts delivers cutting-edge
+        solutions customized to your needs. Get in touch with us to discuss your
+        software development goals.
+      </h2>
 
       <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <Element name="work">
-      <h1
+        <h1
           style={{
             flexWrap: "wrap",
             alignContent: "space-between",
@@ -287,19 +319,19 @@ const MainPage = () => {
           Work with Us
         </h1>
       </Element>
-      <ProjectForm/>
+      <ProjectForm />
       <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </>
   );
 };

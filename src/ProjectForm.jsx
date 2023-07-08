@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios'
-import './scroll.css'
+import axios from "axios";
+import "./scroll.css";
 
 const ProjectForm = () => {
   const [firstName, setFirstName] = useState("");
@@ -13,13 +13,13 @@ const ProjectForm = () => {
   const handleResize = () => {
     setIsMobile(window.innerWidth <= 767);
   };
-  
+
   useEffect(() => {
     handleResize(); // Set initial value
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -36,7 +36,8 @@ const ProjectForm = () => {
     };
 
     // Make an HTTP POST request to the backend endpoint
-    axios.post("http://localhost:3000/api/send-email", formData)
+    axios
+      .post("https://landing-page-api.onrender.com/api/send-email", formData)
       .then((response) => {
         console.log("Email sent successfully");
         // Clear form fields
@@ -64,17 +65,18 @@ const ProjectForm = () => {
       <h2 style={{ marginBottom: "20px", textAlign: "center", color: "white" }}>
         Tell us about your project
       </h2>
-      {/* <div style={{ display: "flex", marginBottom: "20px" }}> */}
-      <label style={{ marginBottom: "20px", color: "white", fontWeight: "bold" }}>
+      <label
+        style={{ marginBottom: "20px", color: "white", fontWeight: "bold" }}
+      >
         First Name
         <input
           style={{
-            marginLeft: isMobile ? '5px' : '0px',
-            width: isMobile ? '90%' : '100%',
+            marginLeft: isMobile ? "5px" : "0px",
+            width: isMobile ? "90%" : "100%",
             padding: "5px",
             borderRadius: "20px",
             height: "40px",
-            marginTop: "5px"
+            marginTop: "5px",
           }}
           type="text"
           value={firstName}
@@ -82,16 +84,18 @@ const ProjectForm = () => {
           required
         />
       </label>
-      <label style={{ marginBottom: "20px", color: "white", fontWeight: "bold" }}>
+      <label
+        style={{ marginBottom: "20px", color: "white", fontWeight: "bold" }}
+      >
         Last Name
         <input
           style={{
-            marginLeft: isMobile ? '5px' : '0px',
-            width: isMobile ? '90%' : '100%',
+            marginLeft: isMobile ? "5px" : "0px",
+            width: isMobile ? "90%" : "100%",
             padding: "5px",
             borderRadius: "20px",
             height: "40px",
-            marginTop: "5px"
+            marginTop: "5px",
           }}
           type="text"
           value={lastName}
@@ -99,17 +103,18 @@ const ProjectForm = () => {
           required
         />
       </label>
-      {/* </div> */}
-      <label style={{ marginBottom: "20px", color: "white", fontWeight: "bold" }}>
+      <label
+        style={{ marginBottom: "20px", color: "white", fontWeight: "bold" }}
+      >
         Email Address
         <input
           style={{
-            marginLeft: isMobile ? '5px' : '0px',
-            width: isMobile ? '90%' : '100%',
+            marginLeft: isMobile ? "5px" : "0px",
+            width: isMobile ? "90%" : "100%",
             padding: "5px",
             borderRadius: "20px",
             height: "40px",
-            marginTop: "5px"
+            marginTop: "5px",
           }}
           type="email"
           value={email}
@@ -117,16 +122,18 @@ const ProjectForm = () => {
           required
         />
       </label>
-      <label style={{ marginBottom: "20px", color: "white", fontWeight: "bold" }}>
+      <label
+        style={{ marginBottom: "20px", color: "white", fontWeight: "bold" }}
+      >
         Phone Number
         <input
           style={{
-            marginLeft: isMobile ? '5px' : '0px',
-            width: isMobile ? '90%' : '100%',
+            marginLeft: isMobile ? "5px" : "0px",
+            width: isMobile ? "90%" : "100%",
             padding: "5px",
             borderRadius: "20px",
             height: "40px",
-            marginTop: "5px"
+            marginTop: "5px",
           }}
           type="tel"
           value={phoneNumber}
@@ -134,26 +141,28 @@ const ProjectForm = () => {
           required
         />
       </label>
-      <label style={{ marginBottom: "20px", color: "white", fontWeight: "bold" }}>
+      <label
+        style={{ marginBottom: "20px", color: "white", fontWeight: "bold" }}
+      >
         Project Description
         <textarea
           style={{
-            marginLeft: isMobile ? '5px' : '0px',
-            width: isMobile ? '90%' : '100%',
+            marginLeft: isMobile ? "5px" : "0px",
+            width: isMobile ? "90%" : "100%",
             padding: "5px",
             borderRadius: "20px",
             height: "120px",
-            marginTop: "5px"
+            marginTop: "5px",
           }}
           value={projectDescription}
-          onChange={(event)=> setProjectDescription(event.target.value)}
+          onChange={(event) => setProjectDescription(event.target.value)}
           required
         />
       </label>
       <button
         style={{
           fontSize: "18px",
-          backgroundColor: '#14af62',
+          backgroundColor: "#14af62",
           color: "white",
           border: "none",
           padding: "10px",
