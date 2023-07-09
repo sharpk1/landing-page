@@ -1,0 +1,16 @@
+.founder-image {
+  width: 200px;
+  height: auto;
+  border-radius: 25%;
+}
+
+@media (max-width: 600px) {
+  /* Adjust styles for screens with a maximum width of 600px */
+  .founder-image {
+    max-width: 100px;
+    height: auto;
+  }
+  p {
+    font-size: 14px;
+  }
+}
