@@ -1,74 +1,82 @@
 .mouse {
-    position: fixed;
-    z-index: 999;
-    width: 100px;
-    left: 50%;
-    bottom: 20px;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
+  position: fixed;
+  z-index: 999;
+  width: 100px;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.mouse-icon {
+  width: 25px;
+  height: 45px;
+  border: 2px solid white;
+  border-radius: 15px;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+  margin: auto;
+}
+
+.mouse-wheel {
+  height: 6px;
+  margin: 2px auto 0;
+  display: block;
+  width: 3px;
+  background-color: white;
+  border-radius: 50%;
+  animation: wheel-up-down 1.6s ease infinite;
+}
+
+@keyframes wheel-up-down {
+  0% {
+    margin-top: 2px;
+    opacity: 0;
   }
-  
-  .mouse-icon {
-    width: 25px;
-    height: 45px;
-    border: 2px solid white;
-    border-radius: 15px;
-    cursor: pointer;
-    position: relative;
-    text-align: center;
-    margin: auto;
+  30% {
+    opacity: 1;
   }
-  
-  .mouse-wheel {
-    height: 6px;
-    margin: 2px auto 0;
-    display: block;
-    width: 3px;
-    background-color: white;
-    border-radius: 50%;
-    animation: wheel-up-down 1.6s ease infinite;
+  100% {
+    margin-top: 20px;
+    opacity: 0;
   }
-  
-  @keyframes wheel-up-down {
-    0% {
-      margin-top: 2px;
-      opacity: 0;
-    }
-    30% {
-      opacity: 1;
-    }
-    100% {
-      margin-top: 20px;
-      opacity: 0;
-    }
+}
+
+.fade-in {
+  animation: fadeIn 3s;
+}
+
+.fade-out {
+  animation: fadeOut 2s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .fade-in {
-    animation: fadeIn 3s;
+  to {
+    opacity: 1;
   }
-  
-  .fade-out {
-    animation: fadeOut 2s;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
   }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+  to {
+    opacity: 0;
   }
-  
-  @keyframes fadeOut {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }
-  
+}
+
+.navbar.scrolled .main-page-image {
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled .main-page-image.shrink {
+  transform: scale(0.5);
+  /* Add any additional styles for the shrink effect */
+}
