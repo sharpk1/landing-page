@@ -8,6 +8,8 @@ import { RiShip2Line } from "react-icons/ri";
 import { Link } from "react-scroll";
 import "./MainPage.css";
 import ProjectForm from "./ProjectForm";
+import BioCard from "./Biocard";
+import bioImage from "./assets/fixed.jpg";
 
 const MainPage = () => {
   const [fadeIn, setFadeIn] = useState(false);
@@ -126,16 +128,16 @@ const MainPage = () => {
       <div className="main-page">
         <div className={`main-page-content ${fadeIn ? "fade-in" : ""}`}>
           <h1 className={`main-page-title ${fadeIn ? "fade-in" : ""}`}>
-            Welcome from Altiro!
+            Let's make your idea a reality.
           </h1>
 
-          <p className="main-page-description">
+          {/* <p className="main-page-description">
             Let's make your idea a reality.
-          </p>
+          </p> */}
           <Link
             activeClass="active"
             className="navlink"
-            to="test2"
+            to="work"
             spy={true}
             smooth={true}
             duration={500}
@@ -273,7 +275,7 @@ const MainPage = () => {
           }}
           className={`main-page-title ${fadeIn ? "fade-in" : ""}`}
         >
-          About Us
+          About Altiro
         </h1>
       </Element>
       <h2
@@ -287,11 +289,12 @@ const MainPage = () => {
           textAlign: "center",
         }}
       >
-        Altiro LLC is a leading software consulting firm that specializes in web
+        {/* Altiro LLC is a leading software consulting firm that specializes in web
         development, mobile development, backend/databases, and cloud
         infrastructure/devops. Our team of experts delivers cutting-edge
         solutions customized to your needs. Get in touch with us to discuss your
-        software development goals.
+        software development goals. */}
+        <BioCard imageSrc={bioImage} />
       </h2>
 
       <br />
